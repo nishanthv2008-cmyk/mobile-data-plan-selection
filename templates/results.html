@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Recommended Plans</title><br>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📊 Recommended Plans</h1><br>
+
+    <p class="subtitle">
+
+        Results for:
+        <strong>{{ user_type }}</strong>
+
+    </p>
+
+
+    {% if recommendations %}
+
+
+        {% for item in recommendations %}
+
+        <div class="plan">
+
+            <div class="plan-header">
+
+                <h2>
+                    {{ item.plan.name }}
+                </h2>
+
+                <span class="score">
+
+                    {{ item.score }}%
+
+                </span>
+
+            </div>
+
+
+            <div class="details">
+
+                <p>
+                    💰 <strong>
+                    ₹{{ item.plan.price }}
+                    </strong>
+                </p>
+
+                <p>
+                    📶
+                    {{ item.plan.data_per_day }}
+                    GB/day
+                </p>
+
+                <p>
+                    📅
+                    {{ item.plan.validity }}
+                    days
+                </p>
+
+                <p>
+                    📞
+                    {{ item.plan.calls }}
+                </p>
+
+                <p>
+                    📡 5G:
+                    {% if item.plan.five_g %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </p>
+
+                <p>
+                    🎬 OTT:
+                    {{ item.plan.ott }}
+                </p>
+
+            </div>
+
+
+            <h3>
+                Why this plan matches:
+            </h3>
+
+            <ul>
+
+                {% for reason in item.reasons %}
+
+                <li>
+                    {{ reason }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+
+            <div class="progress">
+
+                <div
+                    class="progress-bar"
+                    style="--score: {{ item.score }}%;">
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+
+    {% else %}
+
+        <div class="no-results">
+
+            <h2>
+                😕 No matching plans
+            </h2>
+
+            <p>
+                Try increasing your budget
+                or reducing your data requirement.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+
+    <a class="back" href="/">
+
+        ← Search Again
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

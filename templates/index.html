@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Smart Data Plan Selector</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📱 Smart Data Plan Selector</h1>
+
+    <p class="subtitle">
+        Find a mobile plan that matches your needs
+    </p>
+
+
+    <form action="/recommend" method="POST">
+
+
+        <label>👤 What type of user are you?</label>
+
+        <select name="user_type" required>
+
+            <option value="Student">
+                🎓 Student
+            </option>
+
+            <option value="Gamer">
+                🎮 Gamer
+            </option>
+
+            <option value="Streaming">
+                🎬 Streaming
+            </option>
+
+            <option value="Normal">
+                📱 Normal User
+            </option>
+
+        </select><br>
+
+
+        <label>💰 Monthly Budget</label>
+
+        <input
+            type="number"
+            name="budget"
+            placeholder="Example: 500"
+            required
+        ><br>
+
+
+        <label>📶 Required Data Per Day</label>
+
+        <select name="data">
+
+            <option value="1">
+                1 GB/day
+            </option>
+
+            <option value="1.5">
+                1.5 GB/day
+            </option>
+
+            <option value="2">
+                2 GB/day
+            </option>
+
+            <option value="2.5">
+                2.5 GB/day
+            </option>
+
+            <option value="3">
+                3 GB/day
+            </option>
+
+        </select><br>
+
+
+        <label>📅 Minimum Validity</label>
+
+        <select name="validity">
+
+            <option value="28">
+                28 Days
+            </option>
+
+            <option value="56">
+                56 Days
+            </option>
+
+        </select><br>
+
+        <label>📡 Do you need 5G?</label>
+
+        <select name="five_g">
+
+            <option value="yes">
+                Yes
+            </option>
+
+            <option value="no">
+                No
+            </option>
+
+        </select><br>
+
+
+        <label>🎬 Do you want OTT benefits?</label>
+
+        <select name="ott">
+
+            <option value="yes">
+                Yes
+            </option>
+
+            <option value="no">
+                No
+            </option>
+
+        </select><br>
+
+
+        <button type="submit">
+
+            🔍 Find My Best Plans
+
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>
