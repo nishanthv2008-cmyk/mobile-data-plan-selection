@@ -72,7 +72,7 @@ def create_database():
 
 @app.route("/")
 def index():
-    return "Flask is working on Vercel!"
+    return render_template("index.html")
 
 
 # ---------------- RECOMMENDATION ----------------
